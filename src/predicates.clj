@@ -25,17 +25,18 @@
   (every? whitespace? string))
 
 (defn has-award? [book award]
-  )
+  (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (map pred (filter pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= (count a-seq ) (count (filter pred a-seq))))
 
 (defn prime? [n]
-  :-)
+  (let [divede-number? (fn [x] (= java.lang.Long (type (/ n x))))]
+    (not (some divede-number? (range 2 n)))))
 ;^^
